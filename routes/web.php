@@ -11,6 +11,12 @@
 |
 */
 
+Route::get('/', [MedicineController::class, 'index']);
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/medicines', function () {
+    return view('medicines');
 });
