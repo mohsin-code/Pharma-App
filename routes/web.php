@@ -11,12 +11,21 @@
 |
 */
 
-Route::get('/', [MedicineController::class, 'index']);
+// use app\Http\Controllers\WelcomeController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'WelcomeController@index')->name('welcome');
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/medicines', function () {
     return view('medicines');
 });
+
+// Route to Cart
+// Route to Medicine Description
+
+// Optionally
+// Route to Login
+// Route to Contact

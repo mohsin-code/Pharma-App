@@ -74,8 +74,8 @@
                 <div class="card" style="width: 18rem;">
                     <img src="images/flaygel.webp" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <p class="card-text">{{$medicine->medicineName}}</p>
-                        <h4 style="color: green;" class="card-text">Rs {{$medicine->medicinePrice}}</h4>
+                        <p class="card-text">{{$medicine->name}}</p>
+                        <h4 style="color: green;" class="card-text">Rs {{$medicine->price}}</h4>
                         <button class="btn btn-primary">Buy</button>
                         <button class="btn btn-secondary">Add to Cart</button>
                     </div>
