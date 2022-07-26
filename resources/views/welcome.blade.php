@@ -72,12 +72,14 @@
             @foreach($medicines as $medicine)
             <div class="col my-5">
                 <div class="card" style="width: 18rem;">
-                    <img src="images/flaygel.webp" class="card-img-top" alt="...">
+                    <a href="{{ route('medicines.show', $medicine->slug) }}"><img src="{{ asset('images/medicines/'.$medicine->slug.'.jpg') }}" class="card-img-top" alt="..."></a>
                     <div class="card-body">
-                        <p class="card-text">{{$medicine->name}}</p>
+                        <a style='text-decoration:none; color:black' href="{{ route('medicines.show', $medicine->slug) }}">
+                            <p class="card-text">{{$medicine->name}}</p>
+                        </a>
                         <h4 style="color: green;" class="card-text">Rs {{$medicine->price}}</h4>
-                        <button class="btn btn-primary">Buy</button>
-                        <button class="btn btn-secondary">Add to Cart</button>
+                        <button class="btn btn-success">Buy</button>
+                        <button class="btn btn-outline-success">Add to Cart</button>
                     </div>
                 </div>
             </div>

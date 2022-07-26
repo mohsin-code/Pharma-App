@@ -2,19 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Medicines;
 use Illuminate\Http\Request;
 
 class MedicineController extends Controller
 {
-    public function index(){
-        $medicines = medicines::all();
-        return view('welcome',['medicines'=>$medicines])
+    public function index() {
+        $medicines = Medicines::inRandomOrder()->take(12)->get();
+
+        return view("medicines")->with('medicines', $medicines);;
     }
 
-    public function show($medicineName)
+    public function show($slug)
     {
-        return view('user.profile', [
-            'user' => User::findOrFail($id)
+        $product = Medicines::where('slug', $slug)->firstOrFail();
+        $mightAlsoLike = Medicines::where('slug', '!=', $slug)->inRandomOrder()->take(4)->get();
+        return view('product')->with([
+            'product' => $product,
+            'mightAlsoLike' => $mightAlsoLike
         ]);
     }
 }

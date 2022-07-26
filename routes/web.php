@@ -15,13 +15,16 @@
 
 Route::get('/', 'WelcomeController@index')->name('welcome');
 
+Route::get('/medicines', 'MedicineController@index')->name('medicines.index');
+Route::get('/medicines/{product}', 'MedicineController@show')->name('medicines.show');
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
-Route::get('/medicines', function () {
-    return view('medicines');
-});
+// Route::get('/medicines', function () {
+//     return view('medicines');
+// });
 
 // Route to Cart
 // Route to Medicine Description

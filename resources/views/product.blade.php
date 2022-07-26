@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="assets/dist/js/bootstrap.min.js"></script>
-    <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
-    <title>Medicines</title>
+    <link href="{{ asset('assets/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <script src="{{ asset('assets/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <title>{{$product->name}}</title>
 </head>
 <body>
     <!-- Navbar-->
@@ -34,31 +34,33 @@
             </ul>
         </div>
     </nav>
-    <main class="container row">
-        <!--List Group-->
-        <div class="col-3 mx-2 my-5">
-            <ul class="list-group">
-                <li class="list-group-item active">Surgical</li>
-                <li class="list-group-item">Pills</li>
-                <li class="list-group-item">Syrups</li>
-                <li class="list-group-item">Hygiene</li>
-                <li class="list-group-item">Herbal</li>
-            </ul>
+    <main class="container">
+        <div class="row my-5">
+            <div class="col-4">
+                <img class="img-fluid" src="{{ asset('images/medicines/'.$product->slug.'.jpg') }}">
+            </div>
+            <div class="col mx-4 p-2">
+                <h2 class="mt-5">{{$product->name}}</h2>
+                <h5>{{$product->category}}</h5>
+                <h1 style="color: #198754">Rs {{$product->price}}</h1>
+                <p>{{$product->description}}</p>
+                <button class="btn btn-success">Buy</button>
+                <button class="btn btn-outline-success">Add to Cart</button>
+            </div>
         </div>
-
-        <!-- Cards -->
-        <div class="col">
-            <input type="text" class="mt-5 form-control" id="search" placeholder="Search...">
+        <div class="p-5 my-3">
+            <h2>You may like...</h2>
+            <!-- Cards -->
             <div class="row">
-                @foreach($medicines as $medicine)
+                @foreach ($mightAlsoLike as $product)
                 <div class="col my-5">
-                    <div class="card" style="width: 14rem;">
-                        <a href="{{ route('medicines.show', $medicine->slug) }}"><img src="{{ asset('images/medicines/'.$medicine->slug.'.jpg') }}" class="card-img-top" alt="..."></a>
+                    <div class="card" style="width: 100%;">
+                        <a href="{{ route('medicines.show', $product->slug) }}"><img src="{{ asset('images/medicines/'.$product->slug.'.jpg') }}" class="card-img-top" alt="..."></a>
                         <div class="card-body">
-                            <a style='text-decoration:none; color:black' href="{{ route('medicines.show', $medicine->slug) }}">
+                            <a style='text-decoration:none; color:black' href="{{ route('medicines.show', $product->slug) }}">
                                 <p class="card-text">{{$medicine->name}}</p>
                             </a>
-                            <h4 style="color: green;" class="card-text">Rs {{$medicine->price}}</h4>
+                            <h4 style="color: green;" class="card-text">Rs 99</h4>
                             <button class="btn btn-success">Buy</button>
                             <button class="btn btn-outline-success">Add to Cart</button>
                         </div>
